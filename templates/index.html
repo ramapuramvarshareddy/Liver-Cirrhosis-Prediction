@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liver Cirrhosis Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <h2>Liver Cirrhosis Prediction Form</h2>
+    <form action="/predict" method="post">
+        {% for i in range(1, 11) %}
+            <label>Feature {{ i }}:</label>
+            <input type="text" name="f{{ i }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result %}
+        <h3>Prediction: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
